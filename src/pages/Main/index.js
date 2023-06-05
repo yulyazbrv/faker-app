@@ -3,6 +3,7 @@ import { Control } from "../../components/Control";
 import { FakeTable } from "../../components/Table";
 import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
+import { CSVButton } from "../../components/CSV";
 
 const Main = () => {
   const [region, setRegion] = useState("ru");
@@ -94,6 +95,9 @@ const Main = () => {
         handleSeedChange={handleSeedChange}
         handleRandomSeed={handleRandomSeed}
       ></Control>
+      <Flex justify={"center"}>
+        <CSVButton data={users}></CSVButton>
+      </Flex>
       <FakeTable loadMoreUsers={loadMoreUsers} users={users}></FakeTable>
     </Flex>
   );

@@ -10,7 +10,7 @@ const Control = (props) => {
     handleRandomSeed
   } = props;
   return (
-    <Flex direction={"row"} justify={"space-around"} align={"center"}>
+    <Flex direction={"row"} justify={"space-around"} align={"flex-start"}>
       <Select
         label="Region:"
         placeholder="Pick one"
@@ -22,13 +22,13 @@ const Control = (props) => {
           { value: "fr", label: "French" },
         ]}
       />
-      <Flex direction={"column"}>
+      <Flex direction={"column"} gap={2}>
         <NumberInput
           defaultValue={0}
           placeholder="errors"
           label="Number of errors"
           withAsterisk
-          step={1}
+          step={0.5}
           min={0}
           max={1000}
           value={errorCount}
@@ -36,7 +36,7 @@ const Control = (props) => {
         />
         <Slider value={errorCount} onChange={setErrorCount} />
       </Flex>
-      <Flex direction={"column"}>
+      <Flex direction={"row"} align={"flex-end"} gap={2}>
         <NumberInput
           defaultValue={0}
           placeholder="seed"
