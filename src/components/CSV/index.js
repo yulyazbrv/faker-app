@@ -14,7 +14,7 @@ const CSVButton = (props) => {
   };
   return (
     <Flex w={"100"}>
-      <Button onClick={exportToCSV}>Export to CSV</Button>
+      <Button onClick={exportToCSV}>Export to CSV {data.length} users</Button>
     </Flex>
   );
 };
