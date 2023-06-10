@@ -16,7 +16,12 @@ const Main = () => {
     faker.seed(+seed);
     setUsers(generateUsers(20));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [region, errorCount, seed]);
+  }, [region, seed]);
+
+  useEffect(() => {
+    setUsers((users) => applyErrorsToUsers(users));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errorCount]);
 
   const generateUsers = (count, usersLength) => {
     const newUsers = [];
@@ -31,11 +36,19 @@ const Main = () => {
         phone: faker.phone.number(),
       };
 
-      handleError(user);
       newUsers.push(user);
     }
 
     return newUsers;
+  };
+
+  const applyErrorsToUsers = (users) => {
+    const usersWithErrors = users.map((user) => {
+      const userWithError = { ...user };
+      handleError(userWithError);
+      return userWithError;
+    });
+    return usersWithErrors;
   };
 
   const loadMoreUsers = () => {
